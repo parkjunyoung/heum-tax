@@ -1,4 +1,5 @@
 import { Input } from 'element-react';
+import 'element-theme-default';
 
 export default function Form(){
   return <>

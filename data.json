@@ -1,0 +1,31 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "직원1",
+      "email": "test2@naver.com",
+      "isDometic": "내국인",
+      "regNumber": "882211-1042442",
+      "isStay" : "거주함",
+      "company" : "주식회사 데모컴포니"
+    },
+    {
+      "id": 2,
+      "name": "직원2",
+      "email": "test2@naver.com",
+      "isDometic": "내국인",
+      "regNumber": "882211-1042442",
+      "isStay" : "거주함",
+      "company" : "주식회사 데모컴포니"
+    },
+    {
+      "id": 3,
+      "name": "직원3",
+      "email": "test2@naver.com",
+      "isDometic": "내국인",
+      "regNumber": "882211-1042442",
+      "isStay" : "거주함",
+      "company" : "데모 전자"
+    }
+  ]
+}

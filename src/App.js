@@ -1,4 +1,4 @@
-rimport Router from './route/Route';
+import Router from './route/Route';
 
 function App() {
   return (

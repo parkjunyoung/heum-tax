@@ -1,35 +1,10 @@
-import { useState , useEffect } from 'react';
-import { useDispatch , useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { employeesAction } from './slice';
 import 'element-theme-default';
 import ValidationMessage from './ValidationMessage';
-import Modal from './Modal';
 
-export default function Form(){
-
-  const [ isVisible , setIsVisible ] = useState(false);
-
-  const onSetIsVisible = (active) => { 
-    setIsVisible(active);
-  }
-
-  const { register, handleSubmit , formState: { errors } , reset } = useForm();
-
-  const { request } = useSelector((state) => state.employees);
-  const dispatch = useDispatch();
-  const onSubmit = ( data ) => {
-    dispatch(employeesAction.addEmployees(data)); 
-  }
-
-  useEffect(() => {
-    if(request.data) setIsVisible(true);
-    reset();
-  }, [request.data , reset]);
-
+export default function Form({ handleSubmit , register , errors }){
 
   return <div className="demo-block demo-box demo-layout">
-    <form action="" onSubmit={handleSubmit(onSubmit)}>
+    <form action="" onSubmit={handleSubmit}>
       <h3>개인정보</h3>
       
       <div className="el-form-item">
@@ -89,8 +64,6 @@ export default function Form(){
       </div>
       
       <button className="el-button el-button--primary">등록</button>
-      
-      <Modal isVisible={isVisible} data={request.data} onSetIsVisible={onSetIsVisible} />
 
     </form>
   </div>

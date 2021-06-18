@@ -24,12 +24,40 @@ function* getEmployees()
 
 }
 
+function* addEmployees( action )
+{
+
+    const { addEmployeesSuccess  , addEmployeesError } = employeesAction;
+
+    try{
+
+      const payload = yield call( employeesApi.addEmployees , action.payload );
+
+      yield put(addEmployeesSuccess({ data: payload.data }))
+
+    }catch(error){
+
+      yield put(addEmployeesError({
+          error
+      }))
+
+    }
+    
+
+}
+
+
 function* watchGetEmployees() {
     yield takeLatest( employeesAction.getEmployees , getEmployees);
 }
 
+function* watchAddEmployees() {
+  yield takeLatest( employeesAction.addEmployees , addEmployees);
+}
+
 export function* employeesSaga() {
     yield all([
-        fork(watchGetEmployees)
+        fork(watchGetEmployees),
+        fork(watchAddEmployees)
     ])
 } 

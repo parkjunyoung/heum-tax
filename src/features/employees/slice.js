@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { reducerUtils } from '../../util/async.utill';
 
 const initialState  = {
-	employees : reducerUtils.initial()
+  employees : reducerUtils.initial(),
+  request : reducerUtils.initial(),
 };
 
 const name = 'employees';
@@ -19,7 +20,16 @@ const slice = createSlice({
 		},
 		getEmployeesError( state , { payload }) {
       state.employees = reducerUtils.error(payload)
+    },
+    addEmployees( state ) {
+			state.request = reducerUtils.loading()
 		},
+		addEmployeesSuccess( state , { payload }) {
+      state.request = reducerUtils.success(payload.data)
+		},
+		addEmployeesError( state , { payload }) {
+      state.request = reducerUtils.error(payload)
+		}
 	}
 });
 

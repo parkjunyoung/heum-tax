@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import { useDispatch , useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { employeesAction } from './slice';
 import 'element-theme-default';
 import ValidationMessage from './ValidationMessage';
 import Modal from './Modal';
@@ -14,9 +16,12 @@ export default function Form(){
 
   const { register, handleSubmit , formState: { errors } } = useForm();
 
+  const { request } = useSelector((state) => state.employees);
+  const dispatch = useDispatch();
   const onSubmit = data => {
-    console.log(data); 
+    dispatch(employeesAction.addEmployees(data)); 
   }
+
 
   return <div className="demo-block demo-box demo-layout">
     <form action="" onSubmit={handleSubmit(onSubmit)}>

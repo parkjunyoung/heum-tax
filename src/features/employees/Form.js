@@ -22,8 +22,17 @@ export default function Form(){
 
       <div className="el-form-item">
         이메일
-        <input className="el-input__inner" type="text" {...register("email")} />
+        <input className="el-input__inner" type="text" 
+        {...register("email" , { 
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: "이메일 양식에 맞춰주세요."
+          }
+        })} />
+        { errors.email && <ValidationMessage message={errors.email.message }/> }
       </div>
+
+      
 
       <div className="el-form-item">
         내외국인 구분
@@ -38,8 +47,18 @@ export default function Form(){
       
       <div className="el-form-item">
         주민등록번호 *
-        <input className="el-input__inner" type="text" {...register("regNumber" ,  { required: true } )}/>
-        { errors.regNumber?.type === 'required' && <ValidationMessage message="필수 정보입니다." /> }
+        <input className="el-input__inner" type="text" 
+        {...register("regNumber" , { 
+          required: {
+            value : true,
+            message : "필수 필드 입니다."
+          }, 
+          pattern: {
+            value: /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-4][0-9]{6}$/,
+            message: "주민등록번호 양식에 맞춰주세요."
+          }
+        })} />
+        { errors.regNumber && <ValidationMessage message={errors.regNumber.message }/> }
       </div>
 
       <div className="el-form-item">

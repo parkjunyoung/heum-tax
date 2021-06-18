@@ -90,7 +90,7 @@ export default function Form(){
       
       <button className="el-button el-button--primary">등록</button>
       
-      <Modal isVisible={isVisible} onSetIsVisible={onSetIsVisible} />
+      <Modal isVisible={isVisible} data={request.data} onSetIsVisible={onSetIsVisible} />
 
     </form>
   </div>

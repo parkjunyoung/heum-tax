@@ -1,30 +1,36 @@
+import { useForm } from 'react-hook-form';
 import 'element-theme-default';
 import ValidationMessage from './ValidationMessage';
 
 export default function Form(){
 
+  const { register, handleSubmit , formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    console.log(data); 
+  }
+
   return <div className="demo-block demo-box demo-layout">
-    <form action="">
+    <form action="" onSubmit={handleSubmit(onSubmit)}>
       개인정보
       
       <div className="el-form-item">
         성명 *
-        <input className="el-input__inner" type="text" />
-        <ValidationMessage message="필수 정보입니다." />
+        <input className="el-input__inner" type="text" {...register("name" ,  { required: true } )} />
+        { errors.name?.type === 'required' && <ValidationMessage message="필수 정보입니다." /> }
       </div>
 
       <div className="el-form-item">
         이메일
-        <input className="el-input__inner" type="text" />
-        <ValidationMessage message="이메일로 입력해주세요." />
+        <input className="el-input__inner" type="text" {...register("email")} />
       </div>
 
       <div className="el-form-item">
         내외국인 구분
-        <input name="isDometic" type="radio" id="isDometic1"/>
+        <input name="isDometic" type="radio" id="isDometic1" value="내국인" {...register("isDometic")}/>
         <label htmlFor="isDometic1">내국인</label>
 
-        <input name="isDometic" type="radio" id="isDometic2"/>
+        <input name="isDometic" type="radio" id="isDometic2" value="외국인" {...register("isDometic")}/>
         <label htmlFor="isDometic2">외국인</label>
 
       </div>
@@ -32,16 +38,16 @@ export default function Form(){
       
       <div className="el-form-item">
         주민등록번호 *
-        <input className="el-input__inner" type="text" />
-        <ValidationMessage message="필수 정보입니다." />
+        <input className="el-input__inner" type="text" {...register("regNumber" ,  { required: true } )}/>
+        { errors.regNumber?.type === 'required' && <ValidationMessage message="필수 정보입니다." /> }
       </div>
 
       <div className="el-form-item">
         현재 대한민국에 거주(체류)하고 있습니까?
-        <input name="isStay" type="radio" id="isStay1"/>
+        <input name="isStay" type="radio" id="isStay1" value="거주함" {...register("isStay")}/>
         <label htmlFor="isStay1">거주함</label>
       
-        <input name="isStay" type="radio" id="isStay2"/>
+        <input name="isStay" type="radio" id="isStay2" value="거주 안함" {...register("isStay")} />
         <label htmlFor="isStay2">거주 안함</label>
       </div>
       

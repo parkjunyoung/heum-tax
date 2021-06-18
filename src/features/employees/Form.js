@@ -1,4 +1,5 @@
 import 'element-theme-default';
+import ValidationMessage from './ValidationMessage';
 
 export default function Form(){
 
@@ -9,14 +10,13 @@ export default function Form(){
       <div className="el-form-item">
         성명 *
         <input className="el-input__inner" type="text" />
-        <div className="el-form-item__error">
-          This field must be a valid email
-        </div>
+        <ValidationMessage message="필수 정보입니다." />
       </div>
 
       <div className="el-form-item">
         이메일
         <input className="el-input__inner" type="text" />
+        <ValidationMessage message="이메일로 입력해주세요." />
       </div>
 
       <div className="el-form-item">
@@ -33,6 +33,7 @@ export default function Form(){
       <div className="el-form-item">
         주민등록번호 *
         <input className="el-input__inner" type="text" />
+        <ValidationMessage message="필수 정보입니다." />
       </div>
 
       <div className="el-form-item">

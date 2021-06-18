@@ -14,13 +14,18 @@ export default function Form(){
     setIsVisible(active);
   }
 
-  const { register, handleSubmit , formState: { errors } } = useForm();
+  const { register, handleSubmit , formState: { errors } , reset } = useForm();
 
   const { request } = useSelector((state) => state.employees);
   const dispatch = useDispatch();
-  const onSubmit = data => {
+  const onSubmit = ( data ) => {
     dispatch(employeesAction.addEmployees(data)); 
   }
+
+  useEffect(() => {
+    if(request.data) setIsVisible(true);
+    reset();
+  }, [request.data]);
 
 
   return <div className="demo-block demo-box demo-layout">

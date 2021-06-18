@@ -12,7 +12,7 @@ export default function Form(){
 
   return <div className="demo-block demo-box demo-layout">
     <form action="" onSubmit={handleSubmit(onSubmit)}>
-      개인정보
+      <h3>개인정보</h3>
       
       <div className="el-form-item">
         성명 *
@@ -35,7 +35,7 @@ export default function Form(){
       
 
       <div className="el-form-item">
-        내외국인 구분
+        내외국인 구분 <br/>
         <input name="isDometic" type="radio" id="isDometic1" value="내국인" {...register("isDometic")}/>
         <label htmlFor="isDometic1">내국인</label>
 

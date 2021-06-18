@@ -25,7 +25,7 @@ export default function Form(){
   useEffect(() => {
     if(request.data) setIsVisible(true);
     reset();
-  }, [request.data]);
+  }, [request.data , reset]);
 
 
   return <div className="demo-block demo-box demo-layout">

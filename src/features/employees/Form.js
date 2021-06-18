@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import 'element-theme-default';
 import ValidationMessage from './ValidationMessage';
+import Modal from './Modal';
 
 export default function Form(){
+
+  const [ isVisible , setIsVisible ] = useState(false);
+
+  const onSetIsVisible = (active) => { 
+    setIsVisible(active);
+  }
 
   const { register, handleSubmit , formState: { errors } } = useForm();
 
@@ -72,6 +80,8 @@ export default function Form(){
       
       <button className="el-button el-button--primary">등록</button>
       
+      <Modal isVisible={isVisible} onSetIsVisible={onSetIsVisible} />
+
     </form>
   </div>
 }

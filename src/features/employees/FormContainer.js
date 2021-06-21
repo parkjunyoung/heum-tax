@@ -45,7 +45,6 @@ export default function FormContainer(){
     <Modal 
       isVisible={isVisible} 
       data={request.data} 
-      company={company}
       onSetIsVisible={onSetIsVisible} 
     />
 

@@ -1,13 +1,19 @@
 import { useState , useEffect } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
 import { employeesAction } from './slice';
 import Form from './Form';
 import Modal from './Modal';
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 export default function FormContainer(){
 
   const [ isVisible , setIsVisible ] = useState(false);
+  const company = useQuery().get("company");
 
   const onSetIsVisible = (active) => { 
     setIsVisible(active);
@@ -18,6 +24,7 @@ export default function FormContainer(){
   const { request } = useSelector((state) => state.employees);
   const dispatch = useDispatch();
   const onSubmit = ( data ) => {
+    data.company = company;
     dispatch(employeesAction.addEmployees(data)); 
   }
 
@@ -38,6 +45,7 @@ export default function FormContainer(){
     <Modal 
       isVisible={isVisible} 
       data={request.data} 
+      company={company}
       onSetIsVisible={onSetIsVisible} 
     />
 

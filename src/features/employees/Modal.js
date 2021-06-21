@@ -27,7 +27,7 @@ const ButtonStyle = styled.div`
   text-align: center;
 `;
 
-export default function Modal({ isVisible , onSetIsVisible , data }){
+export default function Modal({ isVisible , onSetIsVisible , data , company }){
 
   if(!data) return null
 
@@ -38,7 +38,7 @@ export default function Modal({ isVisible , onSetIsVisible , data }){
     >  
     </i>
     <p>
-      {`데모 주식회사의 ${data.name}사원이 추가되었습니다.`}
+      {`${company}의 사원이 추가되었습니다.`}
     </p>
     <ButtonStyle>
       <span 
